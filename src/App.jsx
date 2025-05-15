@@ -4,8 +4,9 @@ import ME from './assets/me.png'
 import { FaGithub, FaLinkedin, FaEnvelope, FaPhone, FaMapMarkerAlt, FaBirthdayCake, FaLanguage } from 'react-icons/fa'
 import { BsFillPersonLinesFill } from 'react-icons/bs'
 import { HiAcademicCap } from 'react-icons/hi2'
-import { MdWork, MdCode, MdWeb, MdStorage, MdDevices } from 'react-icons/md'
-import { SiJavascript, SiReact, SiNodedotjs, SiHtml5, SiCss3, SiTypescript, SiMongodb, SiExpress, SiGit, SiTailwindcss, SiNestjs, SiRedux, SiMui, SiBootstrap } from 'react-icons/si'
+import { MdWork, MdCode, MdWeb, MdStorage, MdDevices, MdPeopleAlt } from 'react-icons/md'
+import { SiJavascript, SiReact, SiNodedotjs, SiHtml5, SiCss3, SiTypescript, SiMongodb, SiExpress, SiGit, SiTailwindcss, SiNestjs, SiRedux, SiMui, SiBootstrap, SiMysql, SiDocker } from 'react-icons/si'
+import { IoLanguage } from 'react-icons/io5'
 
 function App() {
   const [language, setLanguage] = useState('en'); // 'en' for English, 'vi' for Vietnamese
@@ -32,6 +33,23 @@ function App() {
         education: "Education",
         experience: "Experience",
         skills: "My Skills",
+        programmingLanguages: "Programming Languages",
+        frameworks: "Frameworks & Libraries",
+        tools: "Tools & Technologies",
+        databases: "Databases",
+        softSkills: "Soft Skills",
+        languages: "Languages",
+        softSkillsList: {
+          teamwork: "Teamwork",
+          communication: "Communication",
+          problemSolving: "Problem Solving",
+          timeManagement: "Time Management",
+          adaptability: "Adaptability"
+        },
+        languagesList: {
+          english: "English",
+          vietnamese: "Vietnamese"
+        },
         fptUniversity: "FPT University",
         major: "Major: Software Engineering",
         finalYear: "Final year student",
@@ -45,6 +63,10 @@ function App() {
       projects: {
         browse: "Browse My Recent",
         projects: "Projects",
+        inbsMobile: {
+          title: "AI-Enhanced Nail Service Booking System",
+          description: "A mobile application built with React Native and Expo that allows users to try nail designs using AR technology, book appointments, and get AI-powered service recommendations. Features include authentication, virtual nail try-on, smart booking system, and design recommendations based on user preferences."
+        },
         koiShop: {
           title: "KOI SHOP",
           description: "E-commerce platform for koi fish. Buyers can browse and purchase koi fish, sellers can manage their listings, and admins handle the overall system. Completed with a team of 5 members."
@@ -85,6 +107,23 @@ function App() {
         education: "Học Vấn",
         experience: "Kinh Nghiệm",
         skills: "Kỹ Năng",
+        programmingLanguages: "Ngôn Ngữ Lập Trình",
+        frameworks: "Frameworks & Thư Viện",
+        tools: "Công Cụ & Công Nghệ",
+        databases: "Cơ Sở Dữ Liệu",
+        softSkills: "Kỹ Năng Mềm",
+        languages: "Ngôn Ngữ",
+        softSkillsList: {
+          teamwork: "Làm việc nhóm",
+          communication: "Giao tiếp",
+          problemSolving: "Giải quyết vấn đề",
+          timeManagement: "Quản lý thời gian",
+          adaptability: "Khả năng thích ứng"
+        },
+        languagesList: {
+          english: "Tiếng Anh",
+          vietnamese: "Tiếng Việt"
+        },
         fptUniversity: "Đại học FPT",
         major: "Chuyên ngành: Kỹ thuật phần mềm",
         finalYear: "Sinh viên năm cuối",
@@ -98,6 +137,10 @@ function App() {
       projects: {
         browse: "Khám Phá Những",
         projects: "Dự Án Gần Đây",
+        inbsMobile: {
+          title: "Hệ thống đặt lịch làm nail thông minh",
+          description: "Ứng dụng di động được xây dựng bằng React Native và Expo cho phép người dùng thử các mẫu nail bằng công nghệ AR, đặt lịch hẹn và nhận các đề xuất dịch vụ từ AI. Tính năng bao gồm xác thực, thử nail ảo, hệ thống đặt lịch thông minh và đề xuất thiết kế dựa trên sở thích người dùng."
+        },
         koiShop: {
           title: "KOI SHOP",
           description: "Nền tảng thương mại điện tử cho cá koi. Người mua có thể duyệt và mua cá koi, người bán có thể quản lý danh sách sản phẩm, và quản trị viên điều hành toàn bộ hệ thống. Hoàn thành với đội nhóm 5 thành viên."
@@ -201,10 +244,10 @@ function App() {
               </button>
             </div>
             <div id="socials-container">
-              <FaLinkedin
+              {/* <FaLinkedin
                 className="icon"
                 onClick={() => window.open('https://www.linkedin.com')}
-              />
+              /> */}
               <FaGithub
                 className="icon"
                 onClick={() => window.open('https://github.com/thaintd')}
@@ -255,48 +298,149 @@ function App() {
             </div>
           </div>
 
-          <div className="skills-container">
+          <div className="skills-section">
             <h3 className="h3 skills-title">{t.resume.skills}</h3>
-            <div className="skills-grid">
-              <div className="skill-item">
-                <SiJavascript className="icon" />
-                <span>JavaScript</span>
+            
+            <div className="skills-category">
+              <h4 className="skills-category-title">
+                <MdCode className="category-icon" />
+                {t.resume.programmingLanguages}
+              </h4>
+              <div className="skills-grid">
+                <div className="skill-item">
+                  <SiJavascript className="icon" />
+                  <span>JavaScript</span>
+                </div>
+                <div className="skill-item">
+                  <SiTypescript className="icon" />
+                  <span>TypeScript</span>
+                </div>
+                {/* <div className="skill-item">
+                  <SiHtml5 className="icon" />
+                  <span>HTML5</span>
+                </div>
+                <div className="skill-item">
+                  <SiCss3 className="icon" />
+                  <span>CSS3</span>
+                </div> */}
               </div>
-              <div className="skill-item">
-                <SiTypescript className="icon" />
-                <span>TypeScript</span>
+            </div>
+            
+            <div className="skills-category">
+              <h4 className="skills-category-title">
+                <MdWeb className="category-icon" />
+                {t.resume.frameworks}
+              </h4>
+              <div className="skills-grid">
+                <div className="skill-item">
+                  <SiReact className="icon" />
+                  <span>React</span>
+                </div>
+                <div className="skill-item">
+                  <SiNodedotjs className="icon" />
+                  <span>Node.js</span>
+                </div>
+                <div className="skill-item">
+                  <SiExpress className="icon" />
+                  <span>Express</span>
+                </div>
+                <div className="skill-item">
+                  <SiNestjs className="icon" />
+                  <span>NestJS</span>
+                </div>
+                <div className="skill-item">
+                  <SiRedux className="icon" />
+                  <span>Redux Toolkit</span>
+                </div>
+                <div className="skill-item">
+                  <SiMui className="icon" />
+                  <span>MUI</span>
+                </div>
+                <div className="skill-item">
+                  <SiBootstrap className="icon" />
+                  <span>Bootstrap</span>
+                </div>
+                {/* <div className="skill-item">
+                  <SiTailwindcss className="icon" />
+                  <span>Tailwind CSS</span>
+                </div> */}
               </div>
-              <div className="skill-item">
-                <SiReact className="icon" />
-                <span>React</span>
+            </div>
+            
+            <div className="skills-category">
+              <h4 className="skills-category-title">
+                <MdStorage className="category-icon" />
+                {t.resume.databases}
+              </h4>
+              <div className="skills-grid">
+                <div className="skill-item">
+                  <SiMongodb className="icon" />
+                  <span>MongoDB</span>
+                </div>
+                <div className="skill-item">
+                  <SiMysql className="icon" />
+                  <span>MySQL</span>
+                </div>
               </div>
-              <div className="skill-item">
-                <SiNodedotjs className="icon" />
-                <span>Node.js</span>
+            </div>
+            
+            <div className="skills-category">
+              <h4 className="skills-category-title">
+                <MdDevices className="category-icon" />
+                {t.resume.tools}
+              </h4>
+              <div className="skills-grid">
+                <div className="skill-item">
+                  <SiGit className="icon" />
+                  <span>Git</span>
+                </div>
+                <div className="skill-item">
+                  <FaGithub className="icon" />
+                  <span>GitHub</span>
+                </div>
+                {/* <div className="skill-item">
+                  <SiDocker className="icon" />
+                  <span>Docker</span>
+                </div> */}
               </div>
-              <div className="skill-item">
-                <SiExpress className="icon" />
-                <span>Express</span>
+            </div>
+            
+            <div className="skills-category">
+              <h4 className="skills-category-title">
+                <MdPeopleAlt className="category-icon" />
+                {t.resume.softSkills}
+              </h4>
+              <div className="skills-grid">
+                <div className="skill-item">
+                  <span>{t.resume.softSkillsList.teamwork}</span>
+                </div>
+                <div className="skill-item">
+                  <span>{t.resume.softSkillsList.communication}</span>
+                </div>
+                <div className="skill-item">
+                  <span>{t.resume.softSkillsList.problemSolving}</span>
+                </div>
+                <div className="skill-item">
+                  <span>{t.resume.softSkillsList.timeManagement}</span>
+                </div>
+                <div className="skill-item">
+                  <span>{t.resume.softSkillsList.adaptability}</span>
+                </div>
               </div>
-              <div className="skill-item">
-                <SiNestjs className="icon" />
-                <span>NestJS</span>
-              </div>
-              <div className="skill-item">
-                <SiRedux className="icon" />
-                <span>Redux Toolkit</span>
-              </div>
-              <div className="skill-item">
-                <SiMui className="icon" />
-                <span>MUI</span>
-              </div>
-              <div className="skill-item">
-                <SiBootstrap className="icon" />
-                <span>Bootstrap</span>
-              </div>
-              <div className="skill-item">
-                <SiGit className="icon" />
-                <span>Git/GitHub</span>
+            </div>
+            
+            <div className="skills-category">
+              <h4 className="skills-category-title">
+                <IoLanguage className="category-icon" />
+                {t.resume.languages}
+              </h4>
+              <div className="skills-grid">
+                <div className="skill-item">
+                  <span>{t.resume.languagesList.english}</span>
+                </div>
+                {/* <div className="skill-item">
+                  <span>{t.resume.languagesList.vietnamese}</span>
+                </div> */}
               </div>
             </div>
           </div>
@@ -308,9 +452,28 @@ function App() {
         <h1 className="title">{t.projects.projects}</h1>
         <div className="projects-container">
           <div className="project-card">
-            <div className="project-img-container">
-              <img src={ME} alt="KOI SHOP Project" className="project-img" />
+            <div className="project-content">
+              <h3 className="project-title">{t.projects.inbsMobile.title}</h3>
+              <p className="project-description">
+                {t.projects.inbsMobile.description}
+              </p>
+              <div className="project-tech">
+                <span>React Native</span>
+                <span>Expo</span>
+                <span>TypeScript</span>
+                <span>Firebase</span>
+                <span>TensorFlow.js</span>
+              </div>
+              <div className="project-links">
+                <a href="https://github.com/thaintd/INBS_mobile" target="_blank" rel="noopener noreferrer">
+                  <FaGithub className="icon" />
+                  {t.projects.viewCode}
+                </a>
+              </div>
             </div>
+          </div>
+
+          <div className="project-card">
             <div className="project-content">
               <h3 className="project-title">{t.projects.koiShop.title}</h3>
               <p className="project-description">
@@ -323,7 +486,7 @@ function App() {
                 <span>Redux Toolkit</span>
               </div>
               <div className="project-links">
-                <a href="https://github.com/koithe" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/thaintd/koithe" target="_blank" rel="noopener noreferrer">
                   <FaGithub className="icon" />
                   {t.projects.viewCode}
                 </a>
@@ -332,9 +495,6 @@ function App() {
           </div>
 
           <div className="project-card">
-            <div className="project-img-container">
-              <img src={ME} alt="Goods Exchange App" className="project-img" />
-            </div>
             <div className="project-content">
               <h3 className="project-title">{t.projects.goodsExchange.title}</h3>
               <p className="project-description">
@@ -348,31 +508,7 @@ function App() {
                 <span>MySQL</span>
               </div>
               <div className="project-links">
-                <a href="https://github.com/SWD392" target="_blank" rel="noopener noreferrer">
-                  <FaGithub className="icon" />
-                  {t.projects.viewCode}
-                </a>
-              </div>
-            </div>
-          </div>
-
-          <div className="project-card">
-            <div className="project-img-container">
-              <img src={ME} alt="Online Shop" className="project-img" />
-            </div>
-            <div className="project-content">
-              <h3 className="project-title">{t.projects.onlineShop.title}</h3>
-              <p className="project-description">
-                {t.projects.onlineShop.description}
-              </p>
-              <div className="project-tech">
-                <span>React</span>
-                <span>Spring Boot</span>
-                <span>Docker</span>
-                <span>MySQL</span>
-              </div>
-              <div className="project-links">
-                <a href="https://github.com/swp391" target="_blank" rel="noopener noreferrer">
+                <a href="https://github.com/thongdanghoang/SWD392" target="_blank" rel="noopener noreferrer">
                   <FaGithub className="icon" />
                   {t.projects.viewCode}
                 </a>
@@ -390,10 +526,10 @@ function App() {
             <FaEnvelope className="icon contact-icon email-icon" />
             <p><a href="mailto:thaintd12@gmail.com">thaintd12@gmail.com</a></p>
           </div>
-          <div className="contact-info-container">
+          {/* <div className="contact-info-container">
             <FaLinkedin className="icon contact-icon" />
             <p><a href="https://www.linkedin.com">LinkedIn</a></p>
-          </div>
+          </div> */}
         </div>
       </section>
 
