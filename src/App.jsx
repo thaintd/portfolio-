@@ -170,7 +170,7 @@ function App() {
 
   const handleDownloadCV = () => {
     // Path to your CV file
-    const cvUrl = '/Frontend Developer_Nguyen Tran Duy Thai.pdf';
+    const cvUrl = 'https://www.topcv.vn/xem-cv/DQMBAlVVAw5SUwFWW1EAUgcAA1ZWBlJWVglUVQ169f';
     window.open(cvUrl, '_blank');
   };
 
